@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffccd5;
+            overflow-y: auto;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff4d6d;
+        }
+        .gif-container img {
+            width: 200px;
+            margin: 10px;
+            border-radius: 15px;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+        }
+        .yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .no {
+            background-color: #ff4d6d;
+            color: white;
+            position: absolute;
+        }
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #8b0000;
+            font-weight: bold;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .gif-container img {
+            animation: bounce 1s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine? ❤️</h1>
+        <div class="gif-container">
+            <img src="https://media.tenor.com/4Yg0zOpaQkwAAAAC/milk-mocha-love.gif" alt="Milk Mocha Love">
+            <img src="https://media.tenor.com/3JkWCB0VzBMAAAAM/milk-and-mocha-love.gif" alt="Milk Mocha Hug">
+            <img src="https://media.tenor.com/ePCC6q7nJl0AAAAd/milk-and-mocha-love-you.gif" alt="Milk Mocha Kiss">
+            <img src="https://media.tenor.com/8G3E9cu0OpwAAAAC/milk-mocha-bears.gif" alt="Milk Mocha Bears">
+        </div>
+        <div class="buttons">
+            <button class="btn yes" onclick="yesClicked()">Yes ❤️</button>
+            <button class="btn no" onclick="convinceNo()" onmouseover="moveNoButton()">No 💔</button>
+        </div>
+        <div class="message" id="message">
+            I am sorry for everything I do wrong, but I want to tell you that every time I make a mistake, I will be there—to say sorry, to hold you, and to remind you that I am with you. I want to see you win. I believe in you. I am here to reassure you every time you need me, even in moments when you think you don’t.<br><br>
+            I just want you to understand one thing: sometimes I, too, need reassurance. Things around me aren’t always great—except for you. Why would I let go of the best part of my life? I wouldn’t. But sometimes, I feel like I’m not enough for you. I feel small. 
+        </div>
+        <div class="message" id="noMessage" style="display:none;">
+            Are you sure? 💔 I promise unlimited hugs, love, and cute surprises! 🥺💕
+        </div>
+    </div>
+    
+    <script>
+        let noTexts = [
+            "Think again! What if I promise unlimited cuddles and chocolates? 🍫🥰",
+            "Wait! I’ll give you back rubs forever! 😘",
+            "What if I make you breakfast in bed every day? 🥞☕",
+            "No?? But I already planned cute dates for us! 🥺",
+            "I’ll watch your favorite shows with you, no complaints! 📺❤️",
+            "Are you sure? I’ll even share my fries! 🍟",
+            "What if I never let go of your hand again? 🤝🥰"
+        ];
+        let noIndex = 0;
+        
+        function yesClicked() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        function moveNoButton() {
+            let button = document.querySelector(".no");
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 100);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+            button.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.8 + Math.random() * 0.4})`;
+        }
+
+        function convinceNo() {
+            let noMessage = document.getElementById("noMessage");
+            noMessage.innerText = noTexts[noIndex];
+            noMessage.style.display = "block";
+            noIndex = (noIndex + 1) % noTexts.length;
+        }
+    </script>
+</body>
+</html>
